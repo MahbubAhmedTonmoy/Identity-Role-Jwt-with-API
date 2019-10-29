@@ -82,20 +82,23 @@ namespace CourierAPI.Controllers
                 if(userForRegistrationDTO.Role == "SuperAdmin"){
                 await _userManager.AddToRoleAsync(userToCreate,Role.SuperAdmin);
                 }
-                if(userForRegistrationDTO.Role == "CourierOwner"){
+                else if(userForRegistrationDTO.Role == "CourierOwner"){
                 await _userManager.AddToRoleAsync(userToCreate,Role.CourierOwner);
                 }
-                if(userForRegistrationDTO.Role == "Marchant"){
+                else if(userForRegistrationDTO.Role == "Marchant"){
                 await _userManager.AddToRoleAsync(userToCreate,Role.Marchant);
                 }
-                if(userForRegistrationDTO.Role == "BookingOfficer"){
+                else if(userForRegistrationDTO.Role == "BookingOfficer"){
                 await _userManager.AddToRoleAsync(userToCreate,Role.BookingOfficer);
                 }
-                if(userForRegistrationDTO.Role == "DelivaryMan"){
+                else if(userForRegistrationDTO.Role == "DelivaryMan"){
                 await _userManager.AddToRoleAsync(userToCreate,Role.DelivaryMan);
                 }
-                if(userForRegistrationDTO.Role == "Client"){
+                else if(userForRegistrationDTO.Role == "Client"){
                 await _userManager.AddToRoleAsync(userToCreate,Role.Client);
+                }
+                else{
+                    return BadRequest();
                 }
 
                 return Ok(createdUser);
